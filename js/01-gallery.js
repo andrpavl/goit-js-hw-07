@@ -18,7 +18,7 @@ const markup = galleryItems.map(
 ).join("");
 container.insertAdjacentHTML("beforeend", markup);
 container.addEventListener('click', onClick)
-
+let instance
 function onClick(evt) {
     evt.preventDefault();
     if (!evt.target.classList.contains('gallery__image')) {
@@ -26,7 +26,7 @@ function onClick(evt) {
     }
     const originalImage = evt.target.dataset.source;
     const originalImageAlt = evt.target.alt
-    const instance = basicLightbox.create(`
+    instance = basicLightbox.create(`
     <div class="modal">
         <img src="${originalImage}" alt="${originalImageAlt}">
     </div>
@@ -36,7 +36,9 @@ function onClick(evt) {
 
 document.addEventListener('keydown', (evt) => {
     if (evt.code === 'Escape') {
+      if(instance){
       instance.close();
+      }
     }
   });
 
