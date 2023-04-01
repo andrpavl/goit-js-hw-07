@@ -34,7 +34,7 @@ function onClick(evt) {
     instance.show();
 }
 
-document.addEventListener('keydown', (evt) => {
+document.addEventListener('keydown', evt => {
     if (evt.code === 'Escape') {
       if(instance){
       instance.close();
